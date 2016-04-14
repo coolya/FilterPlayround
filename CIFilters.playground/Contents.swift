@@ -103,6 +103,28 @@ let motionBlurParams : [String : AnyObject] = [kCIInputImageKey: img,
 let motionBlur = CIFilter(name: "CIMotionBlur", withInputParameters: motionBlurParams);
 let motionBlurOutput = motionBlur?.outputImage
 
+// CINoiseReduction
+// https://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CINoiseReduction
+
+let noiseReductionParams : [String : AnyObject] = [kCIInputImageKey: noisyInput,
+                                                   "inputNoiseLevel" : 0.02,
+                                                   "inputSharpness" :  0.40]
+
+let noiseReduction = CIFilter(name: "CINoiseReduction", withInputParameters: noiseReductionParams);
+// For better esier review of the result enlage both images on the right.
+let noiseReductionOutput = noiseReduction?.outputImage
+
+
+// CIZoomBlur
+// https://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIZoomBlur
+
+let zoomBlurParams : [String : AnyObject] = [kCIInputImageKey: img,
+                                               "inputCenter": CIVector(x: 150.0, y: 150.0),
+                                               "inputAmount" : 20.0]
+
+let zoomBlur = CIFilter(name: "CIZoomBlur", withInputParameters: zoomBlurParams);
+let zoomBlurOutput = zoomBlur?.outputImage
+
 
 
 
