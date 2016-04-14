@@ -44,7 +44,7 @@ let colorClampParams : [String : AnyObject] = [kCIInputImageKey: img,
                                                "inputMaxComponents" : CIVector(x: 1.0, y: 1.0, z: 1.0, w: 1.0)]
 
 let colorClamp = CIFilter(name: "CIColorClamp", withInputParameters: colorClampParams);
-let colorClampOutput = colorClamp?.outputImage
+colorClamp?.outputImage
 
 
 // CIColorControls
@@ -56,7 +56,7 @@ let colorControlsParams : [String : AnyObject] = [kCIInputImageKey: img,
                                                "inputContrast" : 1.0]
 
 let colorControls = CIFilter(name: "CIColorControls", withInputParameters: colorControlsParams);
-let colorControlsOutput = colorControls?.outputImage
+colorControls?.outputImage
 
 
 // CIColorMatrix
@@ -70,7 +70,7 @@ let colorMatrixParams : [String : AnyObject] = [kCIInputImageKey: img,
                                                   "inputBiasVector" : CIVector(x: 0.0, y: 0.0, z: 0.0, w: 0.0)]
 
 let colorMatrix = CIFilter(name: "CIColorMatrix", withInputParameters: colorMatrixParams);
-let colorMatrixOutput = colorMatrix?.outputImage
+colorMatrix?.outputImage
 
 
 // CIColorPolynomial
@@ -83,9 +83,99 @@ let colorPolynomialParams : [String : AnyObject] = [kCIInputImageKey: img,
                                                 "inputAlphaCoefficients" : CIVector(x: 0.0, y: 1.0, z: 0.0, w: 0.0)]
 
 let colorPolynomial = CIFilter(name: "CIColorPolynomial", withInputParameters: colorPolynomialParams);
-let colorPolynomialOutput = colorPolynomial?.outputImage
+colorPolynomial?.outputImage
 
 
+// CIExposureAdjust
+// https://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIExposureAdjust
+
+let exposureAdjustParams : [String : AnyObject] = [kCIInputImageKey: img,
+                                                    "inputEV" : 0.5]
+
+let exposureAdjust = CIFilter(name: "CIExposureAdjust", withInputParameters: exposureAdjustParams);
+exposureAdjust?.outputImage
+
+
+// CIGammaAdjust
+// https://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIGammaAdjust
+
+let gammaAdjustParams : [String : AnyObject] = [kCIInputImageKey: img,
+                                                   "inputPower" : 0.75]
+
+let gammaAdjust = CIFilter(name: "CIGammaAdjust", withInputParameters: gammaAdjustParams);
+gammaAdjust?.outputImage
+
+
+// CIHueAdjust
+// https://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIHueAdjust
+
+let hueAdjustParams : [String : AnyObject] = [kCIInputImageKey: img,
+                                                "inputAngle" : 0.5]
+
+let hueAdjust = CIFilter(name: "CIHueAdjust", withInputParameters: hueAdjustParams);
+hueAdjust?.outputImage
+
+
+// CILinearToSRGBToneCurve
+// https://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CILinearToSRGBToneCurve
+
+let linearToSRGBToneCurveParams : [String : AnyObject] = [kCIInputImageKey: img]
+
+let linearToSRGBToneCurve = CIFilter(name: "CILinearToSRGBToneCurve", withInputParameters: linearToSRGBToneCurveParams);
+linearToSRGBToneCurve?.outputImage
+
+
+// CISRGBToneCurveToLinear
+// https://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CISRGBToneCurveToLinear
+
+let sRGBToneCurveToLinearParams : [String : AnyObject] = [kCIInputImageKey: img]
+
+let sRGBToneCurveToLinear = CIFilter(name: "CISRGBToneCurveToLinear", withInputParameters: sRGBToneCurveToLinearParams);
+linearToSRGBToneCurve?.outputImage
+
+
+// CITemperatureAndTint
+// https://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CITemperatureAndTint
+
+let temperatureAndTintParams : [String : AnyObject] = [kCIInputImageKey: img,
+                                                    "inputNeutral" : CIVector(x: 6500.0, y: 0.0),
+                                                    "inputTargetNeutral" : CIVector(x: 6500.0, y: 0.0)]
+
+let temperatureAndTint = CIFilter(name: "CITemperatureAndTint", withInputParameters: temperatureAndTintParams);
+temperatureAndTint?.outputImage
+
+
+// CIToneCurve
+// https://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIToneCurve
+
+let toneCurveParams : [String : AnyObject] = [kCIInputImageKey: img,
+                                                       "inputPoint0" : CIVector(x: 0.0, y: 0.0),
+                                                       "inputPoint1" : CIVector(x: 0.25, y: 0.25),
+                                                       "inputPoint2" : CIVector(x: 0.5, y: 0.5),
+                                                       "inputPoint3" : CIVector(x: 0.75, y: 0.75),
+                                                       "inputPoint4" : CIVector(x: 1.0, y: 1.0)]
+
+let toneCurve = CIFilter(name: "CIToneCurve", withInputParameters: toneCurveParams);
+toneCurve?.outputImage
+
+// CIVibrance
+// https://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIVibrance
+
+let vibranceParams : [String : AnyObject] = [kCIInputImageKey: img,
+                                              "inputAmount" : 9.0]
+
+let vibrance = CIFilter(name: "CIVibrance", withInputParameters: vibranceParams);
+vibrance?.outputImage
+
+
+// CIWhitePointAdjust
+// https://developer.apple.com/library/mac/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIWhitePointAdjust
+
+let whitePointAdjustParams : [String : AnyObject] = [kCIInputImageKey: img,
+                                                     "inputColor" : NSColor.blueColor().asCIColor]
+
+let whitePointAdjust = CIFilter(name: "CIWhitePointAdjust", withInputParameters: whitePointAdjustParams);
+whitePointAdjust?.outputImage
 
 let transform = NSAffineTransform()
     transform.scaleXBy(-1.0, yBy: 1.0);
